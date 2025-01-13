@@ -1,0 +1,36 @@
+import { Picture } from "./Picture";
+
+export type Cat = {
+    id: string;
+    name: string;
+    image?: Picture;
+    origin: string;
+    intelligence: number;
+    reference_image_id: string;
+    description: string;
+    life_span: string;
+    indoor: boolean;
+    lap: boolean;
+    adaptability: number;
+    affection_level: number;
+    child_friendly: number;
+    cat_friendly: number;
+    dog_friendly: number;
+    energy_level: number;
+    grooming: number;
+    health_issues: number;
+    shedding_level: number;
+    social_needs: number;
+    stranger_friendly: number;
+    vocalisation: number;
+    bidability: number;
+    experimental: boolean;
+    hairless: boolean;
+    natural: boolean;
+    rare: boolean;
+    rex: boolean;
+    suppressed_tail: boolean;
+    short_legs: boolean;
+    wikipedia_url: string;
+    hypoallergenic: boolean;
+};

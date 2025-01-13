@@ -1,7 +1,8 @@
+const {t} = require("i18next");
+
 module.exports = {
-  arrowParens: 'avoid',
+  arrowParens: "avoid",
   bracketSameLine: true,
   bracketSpacing: false,
-  singleQuote: true,
-  trailingComma: 'all',
+  singleQuote: false,
 };

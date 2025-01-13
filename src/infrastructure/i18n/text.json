@@ -1,0 +1,52 @@
+{
+    "es-CO": {
+        "general": {
+            "errors": {
+                "ERR_BAD_RESPONSE": "Servicio no disponible"
+            },
+            "notAvailableShort": "N/A",
+            "emptyList": "No hay elementos para mostrar",
+            "catBreeds": "Cat Breeds",
+            "yes": "Si",
+            "not": "No",
+            "search": "Buscar",
+            "noResults": "No se encontraron resultados",
+            "viewMore": "Ver más"
+        },
+        "cats": {
+            "origin": "Pais de origen",
+            "intelligence": "Inteligencia",
+            "lifeSpan": "Esperanza de vida"
+        },
+        "catDetail": {
+            "origin": "Pais de origen: ",
+            "intelligence": "Inteligencia: ",
+            "lifeSpan": "<Typography>Esperanza de vida: <Value>{{-name}} años</Value></Typography>",
+            "indoor": "Domestico: ",
+            "lap_yes": "Prefiere sentarse en regazos: Si",
+            "lap_not": "Prefiere sentarse en regazos: No",
+            "adaptability": "Adaptabilidad: ",
+            "affectionLevel": "Nivel de afecto: ",
+            "childFriendly": "Amigable con niños: ",
+            "catFriendly": "Amigable con gatos: ",
+            "dogFriendly": "Amigable con perros: ",
+            "energyLevel": "Nivel de energía: ",
+            "grooming": "Cuidado: ",
+            "healthIssues": "Problemas de salud: ",
+            "sheddingLevel": "Nivel de muda: ",
+            "socialNeeds": "Necesidades sociales: ",
+            "strangerFriendly": "Amigable con extraños: ",
+            "vocalisation": "Vocalización: ",
+            "bidability": "Capacidad de entrenamiento: ",
+            "experimental": "Experimental: ",
+            "hairless": "Sin pelo: ",
+            "natural": "Natural: ",
+            "rare": "Raro: ",
+            "rex": "Rex: ",
+            "suppressedTail": "Cola suprimida: ",
+            "shortLegs": "Patas cortas: ",
+            "wikipediaUrl": "Mas información",
+            "hypoallergenic": "Hipoalergénico: "
+        }
+    }
+}
