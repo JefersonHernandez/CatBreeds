@@ -1,6 +1,6 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useDeferredValue, useState } from "react";
-import { useTranslation } from "react-i18next";
+import {useInfiniteQuery} from "@tanstack/react-query";
+import {useDeferredValue, useState} from "react";
+import {useTranslation} from "react-i18next";
 import {
   FlatList,
   RefreshControl,
@@ -9,24 +9,24 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { ThemedText } from "../../components/atoms/ThemedText";
+import {ThemedText} from "../../components/atoms/ThemedText";
 import Card from "../../components/molecules/Card";
 import InlineLabel from "../../components/molecules/InlineLabel";
 import ThemedStatusBar from "../../components/molecules/ThemedStatusBar";
-import { useAppTheme } from "../../hooks/useAppTheme";
-import { catServiceInstance } from "../../services/cat.service";
-import { CatsScreenProps } from "../../types/navigation";
+import {useAppTheme} from "../../hooks/useAppTheme";
+import {catServiceInstance} from "../../services/cat.service";
+import {CatsScreenProps} from "../../types/navigation";
 
-export function CatsPage({ navigation }: Readonly<CatsScreenProps>) {
+export function CatsPage({navigation}: Readonly<CatsScreenProps>) {
   const [searchText, setSearchText] = useState("");
   const deferredSearchText = useDeferredValue(searchText);
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const appTheme = useAppTheme();
 
   const catsQuery = useInfiniteQuery({
     initialPageParam: 1,
     queryKey: ["cats", deferredSearchText] as const,
-    queryFn: async ({ pageParam = 1 }) => {
+    queryFn: async ({pageParam = 1}) => {
       if (deferredSearchText) {
         return catServiceInstance.catsSearch(deferredSearchText);
       }
@@ -49,7 +49,7 @@ export function CatsPage({ navigation }: Readonly<CatsScreenProps>) {
   });
 
   function goToDetail(id: string) {
-    navigation.navigate("CatDetail", { id });
+    navigation.navigate("CatDetail", {id});
   }
 
   return (
@@ -62,11 +62,14 @@ export function CatsPage({ navigation }: Readonly<CatsScreenProps>) {
       ]}>
       <ThemedStatusBar />
       <TextInput
-        style={[styles.searchBar, { color: appTheme.text }]}
+        style={[styles.searchBar, {color: appTheme.text}]}
         placeholder={t("general:search")}
         placeholderTextColor={appTheme.text}
         value={searchText}
         onChangeText={setSearchText}
+        testID="searchInput"
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <FlatList
         data={catsQuery.data?.pages.flat()}
@@ -76,14 +79,15 @@ export function CatsPage({ navigation }: Readonly<CatsScreenProps>) {
             onRefresh={catsQuery.refetch}
           />
         }
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <Card>
             <View style={styles.row}>
               <Card.Title style={styles.cardTitle}>{item.name}</Card.Title>
               <ThemedText
                 type="bodyMedium"
                 onPress={() => goToDetail(item.id)}
-                style={styles.link}>
+                style={styles.link}
+                testID="catDetailLink">
                 {t("general:viewMore")}
               </ThemedText>
             </View>

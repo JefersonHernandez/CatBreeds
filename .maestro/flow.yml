@@ -1,0 +1,14 @@
+appId: ${APP_ID}
+---
+- launchApp
+- tapOn:
+    id: "searchInput"
+- inputText: "Raga"
+
+- hideKeyboard
+- tapOn:
+   id: catDetailLink
+- tapOn:
+   id: catDetailLink
+- tapOn: Navigate up
+- stopApp
