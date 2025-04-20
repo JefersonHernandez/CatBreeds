@@ -1,85 +1,213 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# **CatBreeds App**
 
-# Getting Started
+## **Descripción**
 
-> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+CatBreeds App es una aplicación móvil desarrollada en React Native que permite explorar diferentes razas de gatos. Utilizando The Cat API.
 
-## Step 1: Start the Metro Server
+---
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Características
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **Búsqueda de razas de gatos**: Los usuarios pueden buscar razas de gatos ingresando texto en un campo de búsqueda.
+- **Detalles de razas**: Al seleccionar una raza, se muestra información detallada, incluyendo imágenes, descripción y características.
+- **Internacionalización**: Soporte para múltiples idiomas utilizando `i18next`.
 
-```bash
-# using npm
-npm start
+---
 
-# OR using Yarn
-yarn start
+## **Estructura del Proyecto**
+
+```
+CatBreeds/
+├── .maestro/               # Configuración de flujos de prueba automatizados
+│   └── flow.yml            # Archivo de definición de flujos
+├── android/                # Configuración específica para Android
+│   ├── app/                # Código fuente de la aplicación Android
+│   └── build.gradle        # Configuración de Gradle
+├── ios/                    # Configuración específica para iOS
+│   ├── CatBreeds/          # Código fuente de la aplicación iOS
+│   ├── Podfile             # Configuración de CocoaPods
+│   └── CatBreeds.xcodeproj # Proyecto de Xcode
+├── src/                    # Código fuente principal
+│   ├── domain/             # Lógica de negocio
+│   │   ├── models/         # Modelos de datos (e.g., Cat, Picture)
+│   │   ├── repositories/   # Interfaces y repositorios
+│   │   └── services/       # Servicios de negocio
+│   ├── infrastructure/     # Infraestructura y configuración
+│   │   ├── components/     # Componentes reutilizables
+│   │   │   ├── atoms/      # Componentes básicos (e.g., texto, imágenes)
+│   │   │   ├── molecules/  # Componentes más complejos (e.g., tarjetas, etiquetas)
+│   │   │   └── organisms/  # Componentes de mayor nivel
+│   │   ├── hooks/          # Hooks personalizados
+│   │   ├── instances/      # Configuración de instancias (e.g., Axios)
+│   │   ├── navigators/     # Configuración de navegación
+│   │   ├── pages/          # Pantallas principales (CatsPage, CatDetailPage)
+│   │   ├── repositories/   # Implementaciones de repositorios
+│   │   └── services/       # Servicios de infraestructura
+│   ├── types/              # Tipos y definiciones
+│   └── utils/              # Funciones auxiliares y utilidades
+├── assets/                 # Recursos estáticos (imágenes, fuentes, etc.)
+├── package.json            # Dependencias y scripts del proyecto
+└── README.md               # Documentación del proyecto
 ```
 
-## Step 2: Start your Application
+---
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## **Requisitos del Sistema**
 
-### For Android
+- **Node.js**: v18 o superior
+- **React Native CLI**: Instalado globalmente
+- **Android Studio**: Para emulación y compilación en Android
+- **Xcode**: Para emulación y compilación en iOS
+- **Maestro**: Para pruebas automatizadas
+
+---
+
+## **Instalación**
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/JefersonHernandez/CatBreeds.git
+   ```
+
+   ```bash
+   cd CatBreeds
+   ```
+
+2. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+3. Configura las variables de entorno:
+
+   - Crea un archivo `.env` en la raíz del proyecto.
+   - Agrega las variable:
+
+     ```
+     #Obten tu api key en https://thecatapi.com
+     API_KEY=tu_api_key
+
+     #Obten tu api url en https://thecatapi.com
+     API_URL=tu_api_url
+     ```
+
+4. Inicia la aplicación:
+   - Para iOS:
+     ```bash
+     npx react-native run-ios
+     ```
+   - Para Android:
+     ```bash
+     npx react-native run-android
+     ```
+
+---
+
+## **Uso**
+
+1. Abre la aplicación en tu dispositivo o emulador.
+2. Usa el campo de búsqueda para buscar razas de gatos.
+3. Selecciona una raza para ver más detalles.
+4. Navega entre pantallas utilizando los controles de navegación.
+
+---
+
+## **Pruebas**
+
+El proyecto utiliza [Maestro](https://maestro.mobile.dev/) para pruebas automatizadas. Los flujos están definidos en el archivo `flow.yml`.
+
+### Ejecutar pruebas:
+
+1. Instala Maestro:
+
+   ```bash
+   brew install maestro
+   ```
+
+2. Ejecuta los flujos de prueba:
+   ```bash
+   maestro test .maestro/flow.yml --env APP_ID=YOUR_APP_ID
+   ```
+
+---
+
+## **Pruebas Unitarias**
+
+El proyecto incluye pruebas unitarias para garantizar la calidad y el correcto funcionamiento de los componentes, servicios y lógica de negocio. Se utiliza **Jest** como framework principal para las pruebas.
+
+Las pruebas unitarias siguen la convención de nombrar los archivos de prueba con la extensión `.test.ts` o `.test.tsx`.
+
+### **Ejecutar Pruebas**
+
+Para ejecutar las pruebas unitarias, asegúrate de tener todas las dependencias instaladas y ejecuta el siguiente comando:
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+npm test
 ```
 
-### For iOS
+---
 
-```bash
-# using npm
-npm run ios
+## **Dependencias Principales**
 
-# OR using Yarn
-yarn ios
+- **React Native**: Framework principal para el desarrollo móvil.
+- **React Navigation**: Manejo de navegación entre pantallas.
+- **React Query**: Manejo de datos asincrónicos.
+- **Axios**: Cliente HTTP para consumir APIs.
+- **i18next**: Soporte para internacionalización.
+- **Maestro**: Pruebas automatizadas para aplicaciones móviles.
+- **React Native Testing Library**: React Native Testing Library (RNTL) es una solución ligera para probar componentes React Native.
+
+---
+
+## **Estructura de Navegación**
+
+La navegación de la aplicación está configurada utilizando `react-navigation` con un stack principal:
+
+- **Pantallas principales**:
+  - `CatsPage`: Pantalla de búsqueda y listado de razas.
+  - `CatDetailPage`: Pantalla de detalles de una raza específica.
+
+```tsx
+// filepath: index.tsx
+const Stack = createNativeStackNavigator<MainParamList>();
+
+export default function MainStack() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Cats" component={CatsPage} />
+        <Stack.Screen name="CatDetail" component={CatDetailPage} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+---
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+## **Contribución**
 
-## Step 3: Modifying your App
+1. Haz un fork del repositorio.
+2. Crea una rama para tu funcionalidad o corrección:
+   ```bash
+   git checkout -b feature/nueva-funcionalidad
+   ```
+3. Realiza tus cambios y haz un commit:
+   ```bash
+   git commit -m "Agrega nueva funcionalidad"
+   ```
+4. Envía un pull request.
 
-Now that you have successfully run the app, let's modify it.
+---
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Preview
+## **Preview**
 
 | Android                                | iOS                            |
 | -------------------------------------- | ------------------------------ |
 | ![Android GIF](./examples/android.gif) | ![iOS GIF](./examples/ios.gif) |
 
-# Learn More
+## **Licencia**
 
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
